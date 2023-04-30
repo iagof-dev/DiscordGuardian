@@ -1,0 +1,14 @@
+name: DiscordGuardian
+version: '${project.version}'
+main: software.n3rdydev.DiscordGuardian
+api-version: 1.19
+authors: [N3rdyDev]
+description: Plugin que integra o Discord para autorizar o jogador a entrar no servidor (whitelist)
+website: github.com/iagof-dev
+commands:
+  DGadd:
+    description: Autorize um jogador para entrar no servidor, sem entrar no discord e enviar o nick.
+    usage: /DGadd <Username>
+  DGdel:
+    description: Remova a autorização de um jogador de entrar no servidor, ele terá que enviar o nick no discord novamente.
+    usage: /DGdel <Username>
