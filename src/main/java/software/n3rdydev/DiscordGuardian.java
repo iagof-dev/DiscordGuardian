@@ -48,13 +48,5 @@ public final class DiscordGuardian extends JavaPlugin implements Listener {
     @EventHandler
     public void onPlayerLeave(PlayerQuitEvent e) {
         e.setQuitMessage("");
-        Bukkit.getConsoleSender().sendMessage("DiscordGuardian | Registrando " + e.getPlayer().getName() + " com UUID: " + e.getPlayer().getUniqueId());
-        String id = ""+e.getPlayer().getUniqueId();
-        String name = ""+e.getPlayer().getName();
-        Boolean verified = MySql.verifyPlayer(id, name);
-        if (verified != true){
-            e.getPlayer().kickPlayer("Você não está autorizado a entrar no servidor!\nPara liberar login\nEntre: discord.n3rdydesigner.xyz");
-        }
-
     }
 }
