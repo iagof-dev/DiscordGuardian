@@ -9,9 +9,9 @@ import software.n3rdydev.MySql;
 public class DGremove implements CommandExecutor, Listener {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(sender.isOp()){
+        if(sender.isOp() || sender.hasPermission("discordguardian.remove") || sender.hasPermission("discordguardian.*")){
             //tem op
-            if(args[0] != null){
+            if(args[0] != null) {
                 boolean userRemoved = MySql.removeUser(args[0]);
                 if(userRemoved != false){
                     sender.sendMessage("§cUsuário removido da lista branca!");
