@@ -23,7 +23,7 @@ public final class DiscordGuardian extends JavaPlugin implements Listener {
     @Override
     public void onLoad() {
         System.out.println("DiscordGuardian | Carregando...");
-        Bukkit.getConsoleSender().sendMessage("DiscordGuardian | Iniciando conexão com MySql...");
+        Bukkit.getConsoleSender().sendMessage("DiscordGuardian§ | Iniciando conexão com MySql...");
         MySql.CreateCon();
         Bukkit.getConsoleSender().sendMessage("DiscordGuardian | Conectado!");
 
