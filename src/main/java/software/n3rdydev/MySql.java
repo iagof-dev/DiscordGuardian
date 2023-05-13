@@ -1,7 +1,7 @@
 package software.n3rdydev;
 
 import org.bukkit.Bukkit;
-
+import software.n3rdydev.settings;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -9,11 +9,11 @@ import java.sql.ResultSet;
 
 public class MySql {
 
-    static String db_ip = "";
-    static String db_port = "3306";
-    static String db_user = "";
-    static String db_pass = "";
-    static String db_database = "";
+    static String db_ip = settings.db_ip;
+    static int db_port = settings.db_port;
+    static String db_user = settings.db_user;
+    static String db_pass = settings.db_pass;
+    static String db_database = settings.db_database;
     static String db_table = "allowedUsers";
     static String db_type = "jdbc:mysql://";
     public static String db = db_type+db_ip+":"+db_port+"/"+db_database+"?jdbcCompliantTruncation=false";
