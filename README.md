@@ -6,7 +6,7 @@ DiscordGuardian is a Minecraft plugin developed in Java and C#, inspired by Five
 
 ### 🌐 Website:
 
-The source code for the DiscordGuardian website can be found in the GitHub repository: [DiscordGuardian_Site](https://github.com/iagof-dev/DiscordGuardian_Site). The website is used to provide information about the plugin, documentation, updates, and community support.
+The source code for the DiscordGuardian website can be found in the GitHub repository: [DiscordGuardian_Site](https://github.com/iagof-dev/DiscordGuardian_Site). The website is used to make authentication without the bot on discord, if you do not wanna use it.
 
 ### 🤖 Bot:
 
