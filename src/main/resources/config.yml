@@ -1,5 +1,13 @@
+
+#=========================================
+#           DiscordGuardian
+#   Made by: https://github.com/iagof-dev/
+#=========================================
+
+#Configuration MySql
 db_ip: "127.0.0.1"
 db_user: "root"
 db_pass: ""
 db_port: 3306
 db_database: "DiscordGuardian"
+configured: false

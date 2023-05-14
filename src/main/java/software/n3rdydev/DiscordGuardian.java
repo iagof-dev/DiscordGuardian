@@ -13,32 +13,51 @@ import software.n3rdydev.settings;
 import software.n3rdydev.MySql;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 
 
 public final class DiscordGuardian extends JavaPlugin implements Listener {
 
-
-
     @Override
     public void onEnable() {
-        //Carregar configurações
+        //Criando arquivo configuração
         FileConfiguration config = this.getConfig();
+        //Se não possuir nenhum arquivo, criar pasta e arquivo de configuração
+        config.options().copyHeader(true);
         config.options().copyDefaults(true);
+
+        //Salvar Confioguração
         saveConfig();
 
         //Salvar informações do arquivo para a classe do MySql
-        String[] cfg_settings = new String[5];
-        cfg_settings[0] = config.getString("db_ip");
-        cfg_settings[1] = config.getString("db_user");
-        cfg_settings[2] = config.getString("db_pass");
-        int cfg_settings_port = config.getInt("db_port");
-        cfg_settings[4] = config.getString("db_database");
+        settings.LoadSettings(config);
 
-        settings.LoadSettings(cfg_settings[0], cfg_settings[1], cfg_settings[2], cfg_settings[4], cfg_settings_port);
+        //Tabela já foi criada?
+        //true = não faz nada
+        //false = Cria a tabela e seta valor true no configured no arquivo config.yml
+        boolean configurado = config.getBoolean("configured");
+        if(configurado != true){
+            //criar tabela
+            boolean table_created = MySql.CreateTable();
+            //caso tenha criado, atualizar config.yml
+            if(table_created != false){
+                config.set("configured", true);
+                saveConfig();
+            }
+        }
 
-        //Conexão com Mysql
-        //Connection mysqlcon = MySql.CreateCon();
-        Bukkit.getConsoleSender().sendMessage("§f[§dDiscordGuardian§f] §7| §aConectado!");
+        //Criação de conexão com MySql
+        Connection mysqlcon = MySql.CreateCon();
+        boolean mysql_closed = false;
+        try {
+            mysql_closed = mysqlcon.isClosed();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        if (mysql_closed != true)
+        {
+            Bukkit.getConsoleSender().sendMessage("§f[§dDiscordGuardian§f] §7| §aConectado!");
+        }
 
         System.out.println("§f[§dDiscordGuardian§f] §7| §aIniciado!");
         this.getServer().getPluginManager().registerEvents(this, this);
@@ -55,9 +74,11 @@ public final class DiscordGuardian extends JavaPlugin implements Listener {
     }
 
     @Override
-    public void onDisable() {
+    public void onDisable()
+    {
         System.out.println("§f[§dDiscordGuardian§f] §7| §cDesligado!");
     }
+
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         e.setJoinMessage("");

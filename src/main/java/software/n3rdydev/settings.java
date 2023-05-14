@@ -12,30 +12,22 @@ public class settings extends JavaPlugin {
     public static String db_pass = "N3rdygamerbr@123";
     public static String db_database = "DiscordGuardian";
 
+    public static boolean LoadSettings(FileConfiguration cfg){
+        db_ip = cfg.getString("db_ip");
+        db_user = cfg.getString("db_user");
+        db_port = cfg.getInt("db_port");
+        db_pass = cfg.getString("db_pass");
+        db_database = cfg.getString("db_database");
 
 
-    public static boolean CreateSettings(){
-        return false;
-    }
+        //String info = "Informação Recebida:\n" +
+        //      "IP: " + cfg.getString("db_ip") + "\n" +
+        //      "User: " + cfg.getString("db_user") + "\n" +
+        //      "Pass: " + cfg.getString("db_pass") + "\n" +
+        //      "Database: " + cfg.getString("db_database") + "\n" +
+        //      "Port: " + cfg.getInt("db_port") ;
 
-    public static boolean LoadSettings(String cfg_ip, String cfg_user, String cfg_pass, String cfg_database, int cfg_port){
-
-        db_ip = cfg_ip;
-        db_user = cfg_user;
-        db_port = cfg_port;
-        db_pass = cfg_pass;
-        db_database = cfg_database;
-
-        String info = "Informação Recebida:\n" +
-                "IP: " + cfg_ip + "\n" +
-                "User: " + cfg_user + "\n" +
-                "Pass: " + cfg_pass + "\n" +
-                "Database: " + cfg_database + "\n" +
-                "Port: " + cfg_port ;
-
-        Bukkit.getConsoleSender().sendMessage(info);
-
-
+        //Bukkit.getConsoleSender().sendMessage(info);
         return false;
     }
 

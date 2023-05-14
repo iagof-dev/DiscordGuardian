@@ -73,16 +73,18 @@ public class MySql {
     }
 
 
-    public static void CreateTable(){
+    public static boolean CreateTable(){
         String com = "create table if not exists " + db_table +" ( id int auto_increment primary key, uuid varchar(36) null unique, username varchar(32) not null unique, auth bool not null default false );";
         Bukkit.getConsoleSender().sendMessage("DiscordGuardian | Iniciando criação da tabela!");
         try{
             Connection con = CreateCon();
             PreparedStatement st = con.prepareStatement(com);
             Bukkit.getConsoleSender().sendMessage("DiscordGuardian | Tabela Criada!");
+            return true;
         }
         catch (Exception e){
             Bukkit.getConsoleSender().sendMessage("DiscordGuardian | Erro!" + e);
+            return false;
         }
     }
 
