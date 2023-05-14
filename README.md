@@ -10,7 +10,7 @@ The source code for the DiscordGuardian website can be found in the GitHub repos
 
 ### 🤖 Bot:
 
-The source code for the DiscordGuardian bot can be found in the GitHub repository: [DiscordGuardianBot](https://github.com/iagof-dev/DiscordGuardianBot). The bot plays a crucial role in integrating the Discord server with the Minecraft plugin. It manages player verification and authentication, ensuring that only those who have correctly sent their nicknames have access to the server.
+The source code for the DiscordGuardian bot can be found in the GitHub repository: [DiscordGuardianBot](https://github.com/iagof-dev/DiscordGuardianBot). With him you can use authentication without the bot.
 
 ## 🤝 Contribution
 
