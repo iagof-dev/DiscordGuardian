@@ -2,10 +2,8 @@ package software.n3rdydev;
 
 import org.bukkit.Bukkit;
 import software.n3rdydev.settings;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+
+import java.sql.*;
 
 public class MySql {
 
@@ -74,11 +72,13 @@ public class MySql {
 
 
     public static boolean CreateTable(){
-        String com = "create table if not exists " + db_table +" ( id int auto_increment primary key, uuid varchar(36) null unique, username varchar(32) not null unique, auth bool not null default false );";
+        String sql = "use "+ settings.db_database +";create table if not exists " + db_table +" ( id int auto_increment primary key, uuid varchar(36) null unique, username varchar(32) not null unique, auth bool not null default false );";
         Bukkit.getConsoleSender().sendMessage("DiscordGuardian | Iniciando criação da tabela!");
         try{
             Connection con = CreateCon();
-            PreparedStatement st = con.prepareStatement(com);
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate(sql);
+            con.close();
             Bukkit.getConsoleSender().sendMessage("DiscordGuardian | Tabela Criada!");
             return true;
         }

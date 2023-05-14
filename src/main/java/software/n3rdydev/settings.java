@@ -6,11 +6,14 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class settings extends JavaPlugin {
 
-    public static String db_ip = "n3rdydesigner.xyz";
-    public static String db_user = "n3rdydev";
+    public static String db_ip = "";
+    public static String db_user = "";
     public static int db_port = 3306;
-    public static String db_pass = "N3rdygamerbr@123";
+    public static String db_pass = "";
     public static String db_database = "DiscordGuardian";
+
+    //Link para enviar o nick, discord ou site
+    public static String reg_website_discord = "";
 
     public static boolean LoadSettings(FileConfiguration cfg){
         db_ip = cfg.getString("db_ip");
@@ -18,16 +21,7 @@ public class settings extends JavaPlugin {
         db_port = cfg.getInt("db_port");
         db_pass = cfg.getString("db_pass");
         db_database = cfg.getString("db_database");
-
-
-        //String info = "Informação Recebida:\n" +
-        //      "IP: " + cfg.getString("db_ip") + "\n" +
-        //      "User: " + cfg.getString("db_user") + "\n" +
-        //      "Pass: " + cfg.getString("db_pass") + "\n" +
-        //      "Database: " + cfg.getString("db_database") + "\n" +
-        //      "Port: " + cfg.getInt("db_port") ;
-
-        //Bukkit.getConsoleSender().sendMessage(info);
+        reg_website_discord = cfg.getString("website");
         return false;
     }
 

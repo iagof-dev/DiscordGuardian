@@ -10,4 +10,5 @@ db_user: "root"
 db_pass: ""
 db_port: 3306
 db_database: "DiscordGuardian"
-configured: false
+configured: true
+website: "auth.example.com"

@@ -56,10 +56,10 @@ public final class DiscordGuardian extends JavaPlugin implements Listener {
         }
         if (mysql_closed != true)
         {
-            Bukkit.getConsoleSender().sendMessage("§f[§dDiscordGuardian§f] §7| §aConectado!");
+            Bukkit.getConsoleSender().sendMessage("§f[§dDiscordGuardian§f] §7| §aMySql Conectado!");
         }
 
-        System.out.println("§f[§dDiscordGuardian§f] §7| §aIniciado!");
+        Bukkit.getConsoleSender().sendMessage("§f[§dDiscordGuardian§f] §7| §aIniciado!");
         this.getServer().getPluginManager().registerEvents(this, this);
         getCommand("DGadd").setExecutor(new DGadd());
         getCommand("DGdel").setExecutor(new DGremove());
@@ -69,25 +69,25 @@ public final class DiscordGuardian extends JavaPlugin implements Listener {
 
     @Override
     public void onLoad() {
-        System.out.println("§f[§dDiscordGuardian§f] §7| §6Carregando...");
-        Bukkit.getConsoleSender().sendMessage("§f[§dDiscordGuardian§f] §7| §6Iniciando conexão com MySql...");
+        Bukkit.getConsoleSender().sendMessage("§f[§dDiscordGuardian§f] §7| §6Carregando...");
+        Bukkit.getConsoleSender().sendMessage("§f[§dDiscordGuardian§f] §7| §6Iniciando conexao com MySql...");
     }
 
     @Override
     public void onDisable()
     {
-        System.out.println("§f[§dDiscordGuardian§f] §7| §cDesligado!");
+        Bukkit.getConsoleSender().sendMessage("§f[§dDiscordGuardian§f] §7| §cDesligado!");
     }
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
-        e.setJoinMessage("");
         Bukkit.getConsoleSender().sendMessage("§f[§dDiscordGuardian§f] §7| §6Registrando " + e.getPlayer().getName() + " com UUID: " + e.getPlayer().getUniqueId());
         String id = ""+e.getPlayer().getUniqueId();
         String name = ""+e.getPlayer().getName();
         Boolean verified = MySql.verifyPlayer(id, name);
         if (verified != true){
-            e.getPlayer().kickPlayer("[DiscordGuardian] Você não está autorizado a entrar no servidor!\nPara liberar login\nEntre: discord.n3rdydesigner.xyz");
+            e.setJoinMessage("");
+            e.getPlayer().kickPlayer("§f[§dDiscordGuardian§f]\nVocê não está autorizado a entrar no servidor!\nLibere acesso em: §b" + settings.reg_website_discord);
         }
 
     }
